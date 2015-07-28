@@ -634,7 +634,7 @@ module u2plus_core
      (.clk(dsp_clk), .rst(dsp_rst), .clr(clear_rx0),
       .set_stb(set_stb_dsp),.set_addr(set_addr_dsp),.set_data(set_data_dsp),
       .set_stb_user(set_stb_user), .set_addr_user(set_addr_user), .set_data_user(set_data_user),
-      .rx_fe_i(rx_fe_i),.rx_fe_q(rx_fe_q),
+      .rx_fe_i(rx_fe_i),.rx_fe_q(1'b0),
       .sample(sample_rx0), .run(run_rx0_d1), .strobe(strobe_rx0),
       .debug() );
 
@@ -659,7 +659,7 @@ module u2plus_core
      (.clk(dsp_clk), .rst(dsp_rst), .clr(clear_rx1),
       .set_stb(set_stb_dsp),.set_addr(set_addr_dsp),.set_data(set_data_dsp),
       .set_stb_user(set_stb_user), .set_addr_user(set_addr_user), .set_data_user(set_data_user),
-      .rx_fe_i(rx_fe_i),.rx_fe_q(rx_fe_q),
+      .rx_fe_i(1'b0),.rx_fe_q(rx_fe_q),
       .sample(sample_rx1), .run(run_rx1_d1), .strobe(strobe_rx1),
       .debug() );
 
