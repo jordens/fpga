@@ -221,12 +221,20 @@ module u1plus_core
         wire vita_rx_src_rdy, vita_rx_dst_rdy;
         wire [35:0] int_rx_data;
         wire int_rx_src_rdy, int_rx_dst_rdy;
+        wire [23:0] rx_fe;
+
+        if (dspno == 0) begin
+          assign rx_fe = rx_fe_i;
+        end
+        else begin
+          assign rx_fe = rx_fe_q;
+        end
 
        ddc_chain #(.BASE(SR_RX_DSP0+dspno*32), .DSPNO(dspno)) ddc_chain
          (.clk(clk), .rst(reset), .clr(clear_rx),
           .set_stb(set_stb),.set_addr(set_addr),.set_data(set_data),
           .set_stb_user(set_stb_user), .set_addr_user(set_addr_user), .set_data_user(set_data_user),
-          .rx_fe_i(rx_fe_i),.rx_fe_q(rx_fe_q),
+          .rx_fe_i(rx_fe),.rx_fe_q(1'b0),
           .sample(sample_rx), .run(run_rx_n[dspno]), .strobe(strobe_rx),
           .debug() );
 
